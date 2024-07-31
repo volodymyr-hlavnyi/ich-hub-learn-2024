@@ -1,0 +1,107 @@
+import logging
+import random
+import asyncio
+from aiogram import Bot, Dispatcher, types, Router, F
+from aiogram.dispatcher.middlewares.base import BaseMiddleware
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
+from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram.client.session.aiohttp import AiohttpSession
+from aiogram.fsm.state import StatesGroup, State
+from aiogram.utils.text_decorations import html_decoration as fmt
+from questions import questions_data  # Импортируем вопросы напрямую
+from database import init_db, add_user, get_user, update_user_score, get_all_users
+from quiz_handler import start_quiz  # Импортируем новый обработчик команды /quiz
+
+API_TOKEN = '-------'
+
+logging.basicConfig(level=logging.INFO)
+
+# Создание объектов бота и диспетчера
+bot = Bot(token=API_TOKEN)
+dp = Dispatcher(storage=MemoryStorage())
+router = Router()
+
+# Middleware для логирования
+class LoggingMiddleware(BaseMiddleware):
+    async def __call__(self, handler, event, data):
+        logging.info(f"Update: {event}")
+        return await handler(event, data)
+
+dp.message.middleware(LoggingMiddleware())
+
+# Словарь для хранения счетов пользователей
+users_scores = {}
+
+@router.message(Command("start"))
+async def send_welcome(message: types.Message):
+    username = message.from_user.username
+    user = get_user(username)
+    if not user:
+        add_user(message.from_user.first_name, message.from_user.last_name, username)
+        users_scores[username] = {"score": 0, "current_question": 0, "questions": []}
+    await message.answer("Добро пожаловать в тест! Готовы начать? Отправьте /quiz")
+
+@router.message(Command("quiz"))
+async def quiz(message: types.Message):
+    await start_quiz(message)
+
+async def ask_question(message: types.Message):
+    username = message.from_user.username
+    user_data = users_scores[username]
+    current_question_index = user_data["current_question"]
+    if current_question_index < len(user_data["questions"]):
+        question_data = user_data["questions"][current_question_index]
+        question_text = question_data["question"]
+        options = question_data["answers"]
+        markup = ReplyKeyboardMarkup(
+            resize_keyboard=True,
+            one_time_keyboard=True,
+            keyboard=[[KeyboardButton(text=option)] for option in options]
+        )
+        await message.answer(question_text, reply_markup=markup)
+    else:
+        score = user_data["score"]
+        await message.answer(f"Тест завершен! Ваш результат: {score} из {len(user_data['questions'])}")
+        update_user_score(username, score)
+        users_scores.pop(username)
+
+@router.message(F.text.in_([option for q in [q for q_list in questions_data.values() for q in q_list] for option in q["answers"]]))
+async def handle_answer(message: types.Message):
+    username = message.from_user.username
+    user_data = users_scores.get(username)
+    if user_data is None:
+        return
+    current_question_index = user_data["current_question"]
+    question_data = user_data["questions"][current_question_index]
+    if message.text == question_data["answers"][question_data["correct_answer"]]:
+        user_data["score"] += 1
+    user_data["current_question"] += 1
+    await ask_question(message)
+
+@router.message(Command("register"))
+async def register(message: types.Message):
+    try:
+        _, first_name, last_name, username = message.text.split()
+        add_user(first_name, last_name, username)
+        users_scores[username] = {"score": 0, "current_question": 0, "questions": []}
+        await message.answer("Вы успешно зарегистрированы!")
+    except ValueError:
+        await message.answer("Неверный формат. Пожалуйста, используйте: /register имя фамилия никнейм")
+
+@router.message(Command("leaderboard"))
+async def leaderboard(message: types.Message):
+    users = get_all_users()
+    leaderboard_text = "\n".join([f"{user['username']}: {user['score']}" for user in users])
+    await message.answer(f"Лидерборд:\n{leaderboard_text}")
+
+async def main():
+    # Инициализация базы данных перед началом работы бота
+    init_db()
+    dp.include_router(router)
+    await bot.delete_webhook(drop_pending_updates=True)
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())

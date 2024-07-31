@@ -1,0 +1,3 @@
+Linux: домашние задание 16 morning (Python)
+
+Работаем с репозиторием https://github.com/it-career-hub/learning_git 

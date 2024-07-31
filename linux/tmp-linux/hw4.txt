@@ -1,0 +1,9 @@
+Wed Jun 19 14:03:46 UTC 2024
+"Modified with text editor"
+2.3G
+  81 df -h | grep -w '/' | awk '{print $3}' >> new_file.txt 
+  82 cat new_file.txt 
+  83 history | tail -3 >> new_file.txt 
+cron:x:16:16:cron:/var/spool/cron:/sbin/nologin
+at:x:25:25:at:/var/spool/cron/atjobs:/sbin/nologin
+11

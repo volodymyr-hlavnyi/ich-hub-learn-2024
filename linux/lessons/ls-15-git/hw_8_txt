@@ -1,0 +1,31 @@
+  716  mkdir git_intro
+  717  cd git_intro/
+  718  git init
+  719  ls -la
+  720  git add pictures1.png 
+  721  git commit -m "Added pictures 1"
+  722  git branch -M main
+  723  git remote add origin git@github.com:volodymyr-hlavnyi/git_intro.git
+  724  git push -u origin main
+  725  git remote add origin git@github.com:volodymyr-hlavnyi
+  726  git push -u origin main
+  727  git pull
+  728  ls -la
+  729  git add pictures1.png 
+  730  git commit -m "Added pictures 1"
+  731  git branch -M main
+  732  git remote add origin git@github.com:volodymyr-hlavnyi
+  733  git push -u origin main
+  734  git remote add origin git@github.com:volodymyr-hlavnyi/git_intro.git
+  735  git push -u origin main
+  736  git fetch origin
+  737  git pull origin main
+  738  git config pull.rebase true origin main
+  739  git config pull.rebase true
+  740  git pull origin main
+  741  git push origin main
+  742  cd ..
+  743  history > hw_8_txt
+  
+  
+  

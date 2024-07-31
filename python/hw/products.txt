@@ -1,0 +1,100 @@
+Mangosteens, 7.6, 69
+Lemon, 0.4, 54
+Bush Tomato, 2.2, 61
+Butternut pumpkin, 0.2, 32
+Limes, 6.9, 33
+Berries, 10.0, 96
+Melon, 4.4, 58
+Berries, 8.7, 84
+Lemon, 7.8, 92
+Berries, 5.1, 53
+Lychees, 5.9, 100
+Custard Apples Daikon, 9.4, 44
+Pineapple, 7.7, 22
+Jarrahdale pumpkin, 5.6, 38
+Dragonfruit, 8.3, 81
+Kiwiberries, 5.6, 56
+Cavalo, 7.5, 87
+Pineapple, 1.5, 69
+Berries, 0.8, 54
+Elderberry, 6.3, 95
+Incaberries, 2.3, 51
+Cranberry, 7.1, 78
+Avocado, 7.4, 60
+Kiwiberries, 0.3, 25
+Berries, 9.1, 16
+Grapes, 7.4, 68
+Avocado, 8.7, 52
+Sprouts, 3.3, 52
+Juniper Berries, 5.8, 5
+Nectarines, 9.5, 54
+Tangelo, 7.7, 79
+Feijoa, 1.0, 3
+Cherries, 1.5, 3
+Pears, 3.8, 95
+Papaya, 3.3, 63
+Olives, 6.9, 33
+Rockmelon, 4.0, 56
+Rockmelon, 4.9, 47
+Currants, 3.0, 42
+Sultanas, 1.7, 64
+Corella Pear, 7.9, 21
+Olives, 6.4, 68
+Blueberries, 9.5, 87
+Custard Apples, 3.1, 21
+Mangosteens, 9.4, 96
+Cherries, 6.2, 99
+Figs, 6.6, 89
+Olives, 2.0, 100
+Papaw, 2.2, 85
+Dragonfruit, 9.6, 29
+Lychees, 7.1, 57
+Melon, 0.9, 16
+Loquats, 3.8, 67
+Butternut pumpkin, 4.5, 14
+Tomatoes, 7.8, 39
+Juniper Berries, 6.4, 100
+Honeydew melon, 10.0, 7
+Butternut pumpkin, 6.5, 6
+Honeydew melon, 3.2, 71
+Oranges, 7.3, 53
+Lychees, 6.3, 59
+Tangelo, 8.1, 9
+Mango, 5.0, 18
+Berries, 4.4, 80
+Mulberries, 5.3, 49
+Pomegranate, 0.3, 43
+Dried Apricots, 4.1, 69
+Blackberries, 8.1, 100
+Blackberries, 6.7, 36
+Peaches, 7.0, 92
+Tangelo, 1.8, 39
+Aubergine, 7.1, 54
+Plums, 1.5, 81
+Pineapple, 6.9, 45
+Nashi Pear, 5.4, 74
+Apricots, 0.9, 25
+Nectarines, 5.6, 51
+Mango, 6.8, 72
+Melon, 1.2, 92
+Tangelo, 10.0, 18
+Grapes, 5.8, 66
+Custard Apples Daikon, 8.9, 19
+Sprouts, 5.0, 56
+Kiwiberries, 0.8, 65
+Peaches, 9.9, 68
+Avocado, 7.0, 40
+Mulberries, 5.2, 66
+Cavalo, 9.9, 23
+Cranberry, 1.3, 67
+Strawberries, 6.0, 63
+Elderberry, 5.9, 28
+Kiwi Fruit, 2.0, 52
+Corella Pear, 1.1, 57
+Cavalo, 6.1, 94
+Starfruit, 9.3, 84
+Goji Berry, 0.3, 86
+Papaw, 5.8, 62
+Starfruit, 5.3, 19
+Currants, 5.1, 19
+Apricots, 3.8, 50
